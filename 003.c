@@ -24,11 +24,9 @@ int main(){
     
     while(1){
         printf("====================================\n");
-        printf("students RC PR\n");
-        printf("돼지\n");
-        
+        printf("생활관 호실 배정 프로그\n");
         printf("====================================\n");
-        printf("menu : 1. register boy 2. register women 0. exit >\n");
+        printf("메뉴  : 1. 남학생 등록  2. 여학생등록 0. 종료 >\n");
         scanf("%d" ,&n);
         
         if(n==1){
@@ -63,11 +61,11 @@ int findRoom(int persons[5]){
 
 void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10], int wc){
     printf("==================================\n");
-    printf("result register roomnumber\n");
+    printf("생활관 호실 배정 결과는 다음과 같습니\n");
     printf("======================================\n");
 
     
-    printf("men %d\n" , mc); 
+    printf("남학생 명단 %d\n" , mc); 
 
     for(int i =0; i< mc; i++){
         printf("%d. %s [10%d]\n" , i+1 ,mn[i] , mr[i]);
@@ -75,7 +73,7 @@ void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10
 
     printf("\n");
     
-    printf("women %d\n" , wc);
+    printf("여학생 명 %d\n" , wc);
 
     for(int i=0; i < wc; i++){
         printf("%d. %s [20%d]\n" , i+1 , wn[i] , wr[i]);
@@ -85,7 +83,7 @@ void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10
 
     
 
-    printf("reguster all students room\n");
+    printf("호실별 배정 명단\n");
 
     for(int i =0; i < 5; i++){
         printf("10%d" , i+1);
@@ -120,7 +118,7 @@ void ins_studata(int g){
         mr[mc] = room; 
         mp[room -1] = mp[room -1] + 1; 
 
-        printf("%s student register room  10%d\n" , mn[mc] , room);
+        printf("%s 학생   10%d호실 배정되었습니\n" , mn[mc] , room);
         mc = mc + 1;
     }    
     
@@ -130,7 +128,7 @@ void ins_studata(int g){
         wr[wc] = room;
         wp[room -1] = wp[room -1] + 1;
 
-        printf("%sstudent reguster room 20%d\n" , wn[wc] , room);
+        printf("%s학생 20%d호실 배정되었습니다\n" , wn[wc] , room);
 
         wc = wc + 1;
     }
