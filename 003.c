@@ -31,7 +31,6 @@ int main(){
         
         if(n==1){
             if (mc >= 10) {
-                
                 printf("\n오류\n");
                 break;
             }
@@ -58,9 +57,13 @@ int main(){
 
 int findRoom(int persons[5]){
     int r;
+    int n , t;
+    n = 1;
+    t = 4;
 
     while(1){
-        r = rand() %5;  
+        r = rand() %(t - n + 1) + n;
+        
         if(persons[r] < 2){
             return r + 1;  
         }
@@ -74,7 +77,7 @@ void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10
     printf("======================================\n");
 
     
-    printf("남학생 명단 %d\n" , mc); 
+    printf("남학생 명단 %d\n\n" , mc); 
 
     for(int i =0; i< mc; i++){
         printf("%d. %s [10%d]\n" , i+1 ,mn[i] , mr[i]);
@@ -84,7 +87,7 @@ void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10
     
     printf("여학생 명 %d\n" , wc);
 
-    for(int i=0; i < wc; i++){
+    for(int i=0; i < wc;i++){
         printf("%d. %s [20%d]\n" , i+1 , wn[i] , wr[i]);
     }
 
@@ -95,20 +98,20 @@ void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10
     printf("호실별 배정 명단\n");
 
     for(int i =0; i < 5; i++){
-        printf("10%d" , i);
+        printf("10%d호 : " , i+1);
         for(int j =0; j <mc; j++){
-            if(mr[j] ==i){
-                printf("%s" , mn[j]);
+            if(mr[j] ==i+1){
+                printf("%s " , mn[j]);
             }
         }
         printf("\n");
     }
 
     for(int i = 0; i < 5; i++){
-        printf("20%d" , i);
+        printf("20%d호 : " , i+1);
         for(int j =0; j <wc; j++){
-            if(wr[j] ==i){
-                printf("%s" , wn[j]);
+            if(wr[j] ==i+1){
+                printf("%s " , wn[j]);
             }
         }
         printf("\n");
@@ -121,17 +124,19 @@ void ins_studata(int g){
 
     
     if(g == 1){ 
+        printf("학생 이름은? > ");
         scanf("%s" , mn[mc]);
 
         room = findRoom(mp);
         mr[mc] = room; 
         mp[room -1] = mp[room -1] + 1; 
 
-        printf("%s 학생   10%d호실 배정되었습니다\n" , mn[mc] , room);
+        printf("%s 학생 10%d호실 배정되었습니다\n" , mn[mc] , room);
         mc = mc + 1;
     }    
     
     else if(g ==2){
+        printf("학생 이름은? > ");
         scanf("%s" , wn[wc]);
         room = findRoom(wp);
         wr[wc] = room;
