@@ -11,7 +11,7 @@ char wn[10][20];
 int wr[10];
 int wc =0;
 int wp[5] = {0,0,0,0,0};
-    
+
 
 int findRoom(int persons[5]);
 void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10], int wc);
@@ -30,9 +30,18 @@ int main(){
         scanf("%d" ,&n);
         
         if(n==1){
+            if (mc >= 10) {
+                
+                printf("\n오류\n");
+                break;
+            }
             ins_studata(n);
         }
         else if(n==2){
+            if (wc > 10) {
+                printf("\n오류\n");
+                break;
+            }
             ins_studata(n);
         }
         else if(n==0){
@@ -61,7 +70,7 @@ int findRoom(int persons[5]){
 
 void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10], int wc){
     printf("==================================\n");
-    printf("생활관 호실 배정 결과는 다음과 같습니\n");
+    printf("생활관 호실 배정 결과는 다음과 같습니다\n");
     printf("======================================\n");
 
     
@@ -86,7 +95,7 @@ void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10
     printf("호실별 배정 명단\n");
 
     for(int i =0; i < 5; i++){
-        printf("10%d" , i+1);
+        printf("10%d" , i);
         for(int j =0; j <mc; j++){
             if(mr[j] ==i){
                 printf("%s" , mn[j]);
@@ -96,7 +105,7 @@ void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10
     }
 
     for(int i = 0; i < 5; i++){
-        printf("20%d" , i +1);
+        printf("20%d" , i);
         for(int j =0; j <wc; j++){
             if(wr[j] ==i){
                 printf("%s" , wn[j]);
@@ -118,7 +127,7 @@ void ins_studata(int g){
         mr[mc] = room; 
         mp[room -1] = mp[room -1] + 1; 
 
-        printf("%s 학생   10%d호실 배정되었습니\n" , mn[mc] , room);
+        printf("%s 학생   10%d호실 배정되었습니다\n" , mn[mc] , room);
         mc = mc + 1;
     }    
     
